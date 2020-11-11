@@ -1,0 +1,53 @@
+#
+Geometry = GenFormat {
+   <<< "input_name,gen"
+}
+
+Driver = {}	       			
+
+Hamiltonian = DFTB {
+
+  SCC = Yes
+  SCCTolerance = 1e-8
+  SlaterKosterFiles = Type2FileNames {
+    Prefix = "/panasas/scratch/grp-alexeyak/brendan/tutorial/dftb+/"
+    Separator = "-"
+    Suffix = ".skf"
+  }
+  MaxAngularMomentum = {
+    C = "p"
+    H = "s"
+  }
+  Dispersion = LennardJones {
+    Parameters = UFFParameters {}
+ }
+  Filling = Fermi {
+    Temperature [K] = 0.00
+  }
+}
+
+ExcitedState {
+  Casida {
+    NrOfExcitations    = 10
+    StateOfInterest    = 0
+    Symmetry           = singlet
+    EnergyWindow [eV]  = 5.0
+    ExcitedStateForces = no
+    WriteTransitions = yes
+  }
+}
+
+Options = {
+  WriteDetailedXML = yes
+}
+
+Analysis = {
+  CalculateForces   = yes
+  WriteEigenvectors = yes
+
+}
+
+ParserOptions = {
+  ParserVersion = 4
+}
+
