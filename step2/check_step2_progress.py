@@ -33,6 +33,5 @@ def check(prefix,suffix,mini,maxi):
 # argument #3 - minimal index of the file to be found
 # argument #4 - maximal index of the file to be found
 print ("\n")
-check(os.getcwd()+"/res/Hvib_ci_","_re",0,5000)
-
+check(os.getcwd()+"/res/S_ks_","_re",0,5000)
 print ("\nFinished Checking\n")

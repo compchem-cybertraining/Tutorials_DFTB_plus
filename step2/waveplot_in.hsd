@@ -6,7 +6,7 @@ Options {
   #ChargeDensity = Yes            # Charge density for each state?
   RealComponent = Yes             # Plot real component of the wavefunction
   PlottedSpins = 1 -1
-  PlottedLevels = 15:35           # Levels to plot
+  PlottedLevels = 10:40           # Levels to plot
   #PlottedRegion =  OptimalCuboid {}  # Region to plot
   PlottedRegion = {
     Origin = { 0.0 0.0 0.0 } 
