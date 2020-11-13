@@ -37,9 +37,9 @@ es_software_input_template = "dftb_input_template.hsd"
 waveplot_input_template = "waveplot_in.hsd"
 es_software = "dftb+"
 
-istep = 90
-fstep = 99 
-njobs = 4
+istep = 150
+fstep = 200 
+njobs = 5
 
 for njob in range( njobs ):
 
