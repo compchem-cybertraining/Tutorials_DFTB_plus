@@ -1,0 +1,9 @@
+rm out*
+rm sl*
+rm band*
+rm detail*
+rm char*
+rm EX*
+rm TRA*
+rm eigen*
+rm *pin*

@@ -101,7 +101,7 @@ def compute_tnacs( hvib ):
 #####################
 # 3. Divide up into sub-trajectories. These are to be consdiered our independent nuclear sub-trajectories
 subtraj_time_info = [
-                      [0, 0], #[0, 500]
+                      [0, 0],
                     ]
 
 nsubtrajs   = len(subtraj_time_info)
@@ -151,6 +151,7 @@ def myfunc( subtraj ):
     plt.subplot(1,1,1)
     plt.xlabel('Time, fs',   fontsize=10)
     plt.ylabel('Energy, eV', fontsize=10)
+    plt.ylim(0,14)
     for mb_index in range( nstates_mb ):
         plt.plot(md_time, mb_energies[mb_index]*units.au2ev, label="", linewidth=1)
     plt.tight_layout()
@@ -176,6 +177,7 @@ def myfunc( subtraj ):
     plt.subplot(1,1,1)
     plt.xlabel('Time, fs',   fontsize=10)
     plt.ylabel('Energy, eV', fontsize=10)
+    plt.ylim(0,14)
     for sd_index in range( nstates_mixed_sd ):
         plt.plot(md_time, mixed_sd_energies[sd_index]*units.au2ev, label="", linewidth=1)
     plt.tight_layout()

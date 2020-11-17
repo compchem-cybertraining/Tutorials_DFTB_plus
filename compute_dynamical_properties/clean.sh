@@ -1,2 +1,2 @@
-rm -rf MB*
-rm -rf SP*
+rm MB*
+rm SP*
