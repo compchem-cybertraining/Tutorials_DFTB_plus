@@ -25,6 +25,7 @@ import multiprocessing as mp
 
 
 
+####################
 # 1. Get the Hvibs from step2 
 print ("\nGathering data from MD ")
 absolute_path = os.getcwd()
@@ -53,7 +54,8 @@ params["Hvib_im_prefix"] = "Hvib_sd_"; params["Hvib_im_suffix"] = "_im"
 params["nfiles"]         = 50
 params["nstates"]        = 17 # total number of electronic states
 params["init_times"]     = [150]
-params["active_space"]   = list(range( 0, 11 )) # list(range(params["nstates"])) # indexing is from 0!
+#params["active_space"]   = list(range(params["nstates"])) # indexing is from 0!
+params["active_space"]   = list(range(0,11)) # indexing is from 0!
 # Include HOMO and up to the last electronic state
 hvib_mixed_sd = step4.get_Hvib2(params)
 hvib_mixed_sd[0][-1].show_matrix()
@@ -161,7 +163,7 @@ def get_initial_states( energies, num_istates_to_generate, prefactor, average_ex
 #####################
 # 2. Divide up into many nuclear trajectories. These are to be consdiered our independent nuclear trajectories
 nuclear_traj_parser = [
-                        [0, 0], #[0, 199], [0, 399], [0, 599], [0, 799]
+                        [0, 0], #[0, 9], [0, 19]
                       ]
 
 num_nuclear_trajs = len( nuclear_traj_parser )
@@ -193,15 +195,14 @@ energies_mb_all_trajs = []
 istates_mixed_sd_all_trajs  = []
 energies_mixed_sd_all_trajs = []
 
-mean_excitation_energy  = 12.65 # eV
 num_istates_to_generate = 100
 for traj in range( num_nuclear_trajs ):
     
     energies_mb_all_trajs.append( compute_state_energies_vs_time( hvib_mb_trajs[ traj ] ) )
-    istates_mb_all_trajs.append( get_initial_states( energies_mb_all_trajs[ traj ], num_istates_to_generate, 0.1, mean_excitation_energy, 0 ) )
+    istates_mb_all_trajs.append( get_initial_states( energies_mb_all_trajs[ traj ], num_istates_to_generate, 0.1, 12.6, 0 ) )
 
     energies_mixed_sd_all_trajs.append( compute_state_energies_vs_time( hvib_mixed_sd_trajs[ traj ] ) )
-    istates_mixed_sd_all_trajs.append( get_initial_states( energies_mixed_sd_all_trajs[ traj ], num_istates_to_generate, 0.1, mean_excitation_energy, 0 ) )
+    istates_mixed_sd_all_trajs.append( get_initial_states( energies_mixed_sd_all_trajs[ traj ], num_istates_to_generate, 0.1, 12.6, 0 ) )
 
 print(istates_mb_all_trajs)
 print(istates_mixed_sd_all_trajs)
