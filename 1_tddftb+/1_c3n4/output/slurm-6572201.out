@@ -1,0 +1,16 @@
+SLURM_JOBID=6572201
+SLURM_JOB_NODELIST=cpn-p27-15
+SLURM_NNODES=1
+SLURMTMPDIR=/scratch/6572201
+working directory=/projects/academic/cyberwksp21/Instructors_material/alexeyak/dftb/1_tddftb+/1_c3n4
+
+The following have been reloaded with a version change:
+  1) gcc/10.2.0-sse => gcc/7.3.0
+
+ The MKL Libraries are in your library path. This is adequate for compiling and
+running most codes. Source $MKL/bin/mklvars.sh" for more features. 
+ Load any Anaconda Python 3 to use the DFTB+ python scripts. 
+
+The following have been reloaded with a version change:
+  1) gcc/7.3.0 => gcc/10.2.0-sse
+

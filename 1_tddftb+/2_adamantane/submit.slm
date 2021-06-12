@@ -1,0 +1,30 @@
+#!/bin/sh
+#SBATCH --partition=valhalla  --qos=valhalla
+#SBATCH --clusters=faculty
+#SBATCH --account=cyberwksp21
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --requeue
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=12
+#SBATCH --mem=10000
+###SBATCH --mail-user=bsmith24@buffalo.edu
+echo "SLURM_JOBID="$SLURM_JOBID
+echo "SLURM_JOB_NODELIST="$SLURM_JOB_NODELIST
+echo "SLURM_NNODES="$SLURM_NNODES
+echo "SLURMTMPDIR="$SLURMTMPDIR
+echo "working directory="$SLURM_SUBMIT_DIR
+
+module load openmpi/3.0.3/gcc-7.3.0
+export I_MPI_PMI_LIBRARY=/usr/lib64/libpmi.so
+if [ -n "$SLURM_CPUS_PER_TASK" ]; then
+  omp_threads=$SLURM_CPUS_PER_TASK
+else
+  omp_threads=1
+fi
+export OMP_NUM_THREADS=$omp_threads
+
+
+module load dftbplus/20.2.1-arpack
+
+srun dftb+ dftb_in.hsd > out.log

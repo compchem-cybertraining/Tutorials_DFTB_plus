@@ -1,0 +1,158 @@
+Geometry = GenFormat {
+54 C
+C N H
+1   1   1.3938265000E+01   1.8725435000E+01   1.7500170000E+01
+2   2   1.3937185000E+01   1.7254075000E+01   1.7499570000E+01
+3   2   1.2753005000E+01   1.9339495000E+01   1.7500420000E+01
+4   1   1.2733085000E+01   2.0669415000E+01   1.7501040000E+01
+5   1   1.1653235000E+01   2.2686185000E+01   1.7500030000E+01
+6   1   1.3939315000E+01   2.2758045000E+01   1.7500350000E+01
+7   2   1.0378995000E+01   2.3420945000E+01   1.7499870000E+01
+8   2   1.1591795000E+01   2.1352685000E+01   1.7500440000E+01
+9   2   1.2777575000E+01   2.3405785000E+01   1.7499330000E+01
+10   2   1.3939225000E+01   2.1365525000E+01   1.7502030000E+01
+11   2   1.7499405000E+01   1.1086945000E+01   1.7498990000E+01
+12   1   1.7498645000E+01   1.2558125000E+01   1.7499300000E+01
+13   1   1.6291825000E+01   1.4501465000E+01   1.7500620000E+01
+14   1   1.5210905000E+01   1.6517685000E+01   1.7499540000E+01
+15   1   1.8703935000E+01   1.4502375000E+01   1.7500230000E+01
+16   1   1.7497475000E+01   1.6590955000E+01   1.7499420000E+01
+17   1   1.9783405000E+01   1.6519295000E+01   1.7499700000E+01
+18   2   1.9844975000E+01   1.5185765000E+01   1.7500760000E+01
+19   2   1.8659065000E+01   1.7238985000E+01   1.7497970000E+01
+20   2   1.5124085000E+01   1.9338875000E+01   1.7500490000E+01
+21   2   1.6334895000E+01   1.7237705000E+01   1.7498570000E+01
+22   2   1.7497615000E+01   1.5198265000E+01   1.7501260000E+01
+23   2   1.8683985000E+01   1.3172235000E+01   1.7498460000E+01
+24   2   1.6312865000E+01   1.3171405000E+01   1.7500480000E+01
+25   2   1.5149905000E+01   1.5184155000E+01   1.7500080000E+01
+26   1   2.1059255000E+01   1.8724975000E+01   1.7500260000E+01
+27   2   1.9873945000E+01   1.9338915000E+01   1.7500940000E+01
+28   2   2.1057935000E+01   1.7253845000E+01   1.7499830000E+01
+29   2   2.2245025000E+01   1.9338325000E+01   1.7500060000E+01
+30   1   1.5145215000E+01   2.0668945000E+01   1.7501360000E+01
+31   1   1.6225785000E+01   2.2685175000E+01   1.7500420000E+01
+32   1   1.9853745000E+01   2.0669135000E+01   1.7501130000E+01
+33   1   1.8773935000E+01   2.2685845000E+01   1.7500510000E+01
+34   1   2.2266105000E+01   2.0668465000E+01   1.7501280000E+01
+35   1   2.1060335000E+01   2.2757745000E+01   1.7500900000E+01
+36   1   2.3346725000E+01   2.2684765000E+01   1.7500920000E+01
+37   2   1.5101595000E+01   2.3405045000E+01   1.7499230000E+01
+38   2   1.6286865000E+01   2.1351695000E+01   1.7501320000E+01
+39   2   1.7499575000E+01   2.3421245000E+01   1.7500280000E+01
+40   2   1.9898305000E+01   2.3405555000E+01   1.7500570000E+01
+41   2   2.2222635000E+01   2.3404455000E+01   1.7499930000E+01
+42   2   2.3407915000E+01   2.1350955000E+01   1.7501700000E+01
+43   2   2.1060095000E+01   2.1364995000E+01   1.7501900000E+01
+44   2   1.8712515000E+01   2.1352305000E+01   1.7500410000E+01
+45   2   2.4620505000E+01   2.3420985000E+01   1.7500860000E+01
+46   3   1.0378465000E+01   2.4405445000E+01   1.7499570000E+01
+47   3   9.5266650000E+00   2.2928235000E+01   1.7500060000E+01
+48   3   1.8352265000E+01   1.0595135000E+01   1.7498130000E+01
+49   3   1.6647055000E+01   1.0594255000E+01   1.7499640000E+01
+50   3   2.4620035000E+01   2.4405485000E+01   1.7500300000E+01
+51   3   2.5473335000E+01   2.2929135000E+01   1.7501380000E+01
+52   3   1.3084255000E+01   1.6762395000E+01   1.7499190000E+01
+53   3   2.1910125000E+01   1.6760885000E+01   1.7499630000E+01
+54   3   1.7499285000E+01   2.4405745000E+01   1.7500030000E+01
+}
+Driver = {}
+Hamiltonian = DFTB {
+  SCC = Yes
+  SCCTolerance = 1e-8
+  SlaterKosterFiles = Type2FileNames {
+    Prefix = "/projects/academic/cyberwksp21/Software/data/dftb/sk/3ob-3-1/"
+    Separator = "-"
+    Suffix = ".skf"
+    LowerCaseTypeName = No
+  }
+  MaxAngularMomentum = {
+    C = "p"
+    N = "p"
+    H = "s"
+  }
+  Dispersion = LennardJones {
+    Parameters = UFFParameters {}
+  }
+  Filling = Fermi {
+    Temperature [K] = 0.00
+  }
+  Differentiation = FiniteDiff {
+    Delta = 1.0000000000000000E-002
+  }
+  PolynomialRepulsive = {}
+  ShellResolvedSCC = No
+  OldSKInterpolation = No
+  RangeSeparated = None {}
+  ReadInitialCharges = No
+  InitialCharges = {}
+  HCorrection = None {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  Charge = 0.0000000000000000
+  MaxSCCIterations = 100
+  OnSiteCorrection = {}
+  Solvation = {}
+  Electrostatics = GammaFunctional {}
+  ThirdOrder = No
+  ThirdOrderFull = No
+  ForceEvaluation = "Traditional"
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+}
+ExcitedState = Casida {
+  NrOfExcitations = 10
+  StateOfInterest = 0
+  Symmetry = singlet
+  EnergyWindow [eV] = 5.0
+  ExcitedStateForces = no
+  WriteTransitions = yes
+  OscillatorWindow = 0.0000000000000000
+  CacheCharges = Yes
+  WriteMulliken = No
+  WriteCoefficients = No
+  WriteEigenvectors = No
+  WriteDensityMatrix = No
+  WriteXplusY = No
+  WriteSPTransitions = No
+  WriteTransitionDipole = No
+  WriteStatusArnoldi = No
+  TestArnoldi = No
+}
+Options = {
+  WriteDetailedXML = yes
+  WriteDetailedOut = Yes
+  WriteAutotestTag = No
+  WriteResultsTag = No
+  RestartFrequency = 20
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+}
+Analysis = {
+  CalculateForces = yes
+  WriteEigenvectors = yes
+  ProjectStates = {}
+  WriteBandOut = Yes
+  MullikenAnalysis = Yes
+  WriteNetCharges = No
+  AtomResolvedEnergies = No
+  EigenvectorsAsText = No
+}
+ParserOptions = {
+  ParserVersion = 9
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Reks = None {}

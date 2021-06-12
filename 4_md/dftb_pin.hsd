@@ -1,0 +1,141 @@
+Geometry = GenFormat {
+26  C
+C  H
+1   1       0.31048000       1.05089000      -0.88212000
+2   1       1.20028000       0.16877000      -0.00000000
+3   1       0.31048000      -0.71335000       0.88212000
+4   2       1.86258000      -0.44364000      -0.61241000
+5   2       1.86258000       0.78118000       0.61241000
+6   1      -0.57164000       0.16877000       1.77192000
+7   1      -1.45376000       1.05089000       0.88212000
+8   2      -1.18405000      -0.44364000       2.43422000
+9   2       0.04077000       0.78118000       2.43422000
+10   1      -0.57164000       1.94069000      -0.00000000
+11   2      -1.18405000       2.60299000      -0.61241000
+12   2       0.04077000       2.60299000       0.61241000
+13   1      -0.57164000       0.16877000      -1.77192000
+14   2       0.93914000       1.67955000      -1.51078000
+15   1      -0.57164000      -1.60315000      -0.00000000
+16   2       0.93914000      -1.34201000       1.51078000
+17   1      -1.45376000      -0.71335000      -0.88212000
+18   2       0.04077000      -2.26545000      -0.61241000
+19   2      -1.18405000      -2.26545000       0.61241000
+20   2      -2.08242000      -1.34201000      -1.51078000
+21   1      -2.34356000       0.16877000      -0.00000000
+22   2      -1.18405000       0.78118000      -2.43422000
+23   2       0.04077000      -0.44364000      -2.43422000
+24   2      -3.00587000       0.78118000      -0.61241000
+25   2      -2.08242000       1.67955000       1.51078000
+26   2      -3.00587000      -0.44364000       0.61241000
+}
+Driver = VelocityVerlet {
+  MovedAtoms = 1:-1
+  Steps = 500
+  TimeStep [fs] = 1.0
+  KeepStationary = Yes
+  OutputPrefix = "md"
+  Thermostat = NoseHoover {
+    Temperature [Kelvin] = 273.15
+    CouplingStrength [cm^-1] = 600
+    ChainLength = 3
+    Order = 3
+    IntegratorSteps = 1
+    AdaptFillingTemp = No
+  }
+  MDRestartFrequency = 1
+  Velocities = {}
+  ConvergentForcesOnly = Yes
+  Plumed = No
+  Masses = {}
+}
+Hamiltonian = DFTB {
+  SCC = Yes
+  SlaterKosterFiles = Type2FileNames {
+    Prefix = "/projects/academic/cyberwksp21/Instructors_material/alexeyak/ergoscf/ex3_libra_ergo/step1/3ob-3-1/"
+    Separator = "-"
+    Suffix = ".skf"
+    LowerCaseTypeName = No
+  }
+  MaxAngularMomentum = {
+    C = "p"
+    H = "s"
+  }
+  Dispersion = SlaterKirkwood {
+    PolarRadiusCharge = HybridDependentPol {
+      C = {
+        CovalentRadius [Angstrom] = 0.6
+        HybridPolarisations [Angstrom^3,Angstrom,] = {
+1.382 1.382 1.382 1.064 0.000 0.000   3.8 3.8 3.8 3.8 3.8 3.8   2.50
+        }
+      }
+      H = {
+        CovalentRadius [Angstrom] = 0.6
+        HybridPolarisations [Angstrom^3,Angstrom,] = {
+0.386 0.386 0.000 0.000 0.000 0.000   3.5 3.5 3.5 3.5 3.5 3.5   0.80
+        }
+      }
+    }
+  }
+  Differentiation = FiniteDiff {
+    Delta = 1.0000000000000000E-002
+  }
+  PolynomialRepulsive = {}
+  ShellResolvedSCC = No
+  OldSKInterpolation = No
+  RangeSeparated = None {}
+  ReadInitialCharges = No
+  InitialCharges = {}
+  SCCTolerance = 1.0000000000000001E-005
+  HCorrection = None {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  Charge = 0.0000000000000000
+  MaxSCCIterations = 100
+  OnSiteCorrection = {}
+  Solvation = {}
+  Electrostatics = GammaFunctional {}
+  ThirdOrder = No
+  ThirdOrderFull = No
+  ForceEvaluation = "Traditional"
+  Mixer = Broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+  Filling = Fermi {
+    Temperature = 0.0000000000000000
+  }
+}
+Options = {
+  WriteAutotestTag = Yes
+  WriteDetailedOut = Yes
+  WriteDetailedXML = No
+  WriteResultsTag = No
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  TimingVerbosity = 1
+  WriteChargesAsText = No
+}
+Analysis = {
+  ProjectStates = {}
+  WriteEigenvectors = No
+  WriteBandOut = Yes
+  MullikenAnalysis = Yes
+  WriteNetCharges = No
+  AtomResolvedEnergies = No
+  CalculateForces = No
+}
+ParserOptions = {
+  ParserVersion = 9
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Reks = None {}
+ExcitedState = {}
