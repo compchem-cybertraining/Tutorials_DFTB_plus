@@ -12,7 +12,7 @@ and then create an environment to use install and use different packages. The in
 
 Use the following instructions for compiling the DFTB+ with `ARPACK`.
 
-**1.1** Install the Fortran and C/C++ compilers using `conda`:
+**1.1** Install the Fortran and C/C++ compilers and `ARPACK`  using `conda`:
 ```
 conda install cmake
 conda install gcc_linux-64
@@ -72,4 +72,64 @@ dftb+ inputfile > out.log
 
 All other executables are available in the `dftb+/bin` folder such as `waveplot` or `xyz2gen` or `gen2xyz`. To see all the executable files, you can use `ls dftb+/bin`.
 
+
+# 2. Manually compile the `ARPACK`
+
+**2.1** First download ARPACK and its patch from its website and unpack it:
+```
+wget https://www.caam.rice.edu/software/ARPACK/SRC/arpack96.tar.Z --no-check-certificate
+wget https://www.caam.rice.edu/software/ARPACK/SRC/patch.tar.Z --no-check-certificate
+zcat arpack96.tar.Z | tar xvf -
+zcat patch.tar.Z | tar xvf -
+cd ARPACK
+```
+
+Make changes to the `ARmake.inc` and set the directories based on the environment you use (The `PLAT` is based on the architecture of the computer or cluster you use):
+```
+home = /full/path/to/ARPACK
+FC = gfortran # or /full/path/to/gfortran 
+FFLAGS = -O -fPIC
+MAKE = /usr/bin/make
+ARPACKLIB  = $(home)/libarpack.a
+PLAT = SUN4
+```
+
+Make all or just the library:
+```
+make all
+# or
+# make lib
+```
+now `libarpack.a` file is generated and you need to generate the shared library using 
+```
+gfortran -shared libarpack.a -o libarpack.so
+```
+
+**2.2** Compiling the ARPACK using `.deb` files
+
+**_Note:_** The use of the method below is not recommended for all libraries and here we use it just for `ARPACK`.
+
+If you have root access it is easy to download ARPACK using `sudo apt-get install libarpack2-dev` command but sometimes you do not access to `apt-get install` which 
+requires root access too. You can first download it using `apt-get download package_name` or `apt download package_name`. If `apt` is not available on your cluster you can 
+download the `.deb` file locally on your computer and transfer it to your account.
+
+After downloading, you need to extract it using `ar vx`  or `dpkg -x`. Here we use `ar vx` since again `dpkg` may not be available on your local cluster.
+```
+apt download libarpack2-dev
+ar vx libarpack2-dev_3.5.0+real-2_amd64.deb  
+```
+Now generate the shared library yourself using the gfortran that was installed by `conda`:
+```
+cd usr/lib/x86_64-linux-gnu
+gfortran -shared libarpack.a -o libarpack.so
+```
+
+After compiling `ARPACK` using either **2.1** or **2.2**, you can make the DFTB+ in the DFTB+ folder using the following commands and make it as is shown above:
+```
+rm -rf _build
+FC=gfortran CC=gcc cmake \
+-DWITH_ARPACK=true \
+-DCMAKE_PREFIX_PATH=/full/path/to/ARPACK \
+-DCMAKE_INSTALL_PREFIX=/path/to/installation/of/dftb+1 -B _build .
+```
 
