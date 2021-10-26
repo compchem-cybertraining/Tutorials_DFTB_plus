@@ -75,7 +75,9 @@ All other executables are available in the `dftb+/bin` folder such as `waveplot`
 
 # 2. Manually compile the `ARPACK`
 
-**2.1** First download ARPACK and its patch from its website and unpack it:
+## 2.1 Download and compile from ARPACK website
+
+First download ARPACK and its patch from its website and unpack it:
 ```
 wget https://www.caam.rice.edu/software/ARPACK/SRC/arpack96.tar.Z --no-check-certificate
 wget https://www.caam.rice.edu/software/ARPACK/SRC/patch.tar.Z --no-check-certificate
@@ -105,7 +107,7 @@ now `libarpack.a` file is generated and you need to generate the shared library 
 gfortran -shared libarpack.a -o libarpack.so
 ```
 
-**2.2** Compiling the ARPACK using `.deb` files
+## 2.2 Compiling the ARPACK using `.deb` files
 
 **_Note:_** The use of the method below is not recommended for all libraries and here we use it just for `ARPACK`.
 
