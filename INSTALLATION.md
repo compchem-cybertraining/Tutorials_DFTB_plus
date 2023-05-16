@@ -12,6 +12,70 @@ and then create an environment to use install and use different packages. The in
 
 Use the following instructions for compiling the DFTB+ with `ARPACK`.
 
+## More recent set of instructions (as of 5/16/2023). At this point, we are working with DFTB+ version 22.2:
+
+Based on [these installation instructions](https://github.com/dftbplus/dftbplus/blob/22.2/INSTALL.rst)
+
+1. We are working the `libra` environment, set up according to [these instructions](https://github.com/Quantum-Dynamics-Hub/libra-code)
+   So, it already should have cmake and gcc/gxx compiler packages installed. 
+   Add gfortran and arpack:
+
+    ```
+    conda install -c conda-forge gfortran
+    conda install -c conda-forge arpack
+    ```
+
+2. Get the source of DFTB+ and install external stuff
+
+    ```
+    mkdir dftbplus
+    cd dftbplus/
+    git clone https://github.com/dftbplus/dftbplus.git
+    md dftbplus dftbplus_22.2
+    cd dftbplus_22.2/
+    ./utils/get_opt_externals
+    ```
+
+3. Edit the configuration file `vi config.cmake`, to enable xTB and TD-DFTB:
+
+    ```
+    option(WITH_TBLITE "Whether xTB support should be included via tblite." TRUE)
+
+    option(WITH_ARPACK "Whether the ARPACK library should be included (needed for TD-DFTB)" TRUE)
+    ```
+
+4. Create build and installation directories and run the configuration:
+
+    ```
+    mkdir _build
+    mkdir _install
+    C=gfortran CC=gcc cmake -DCMAKE_INSTALL_PREFIX=/home/alexvakimov/SOFTWARE/dftbplus/dftbplus/_install -B _build
+    ```
+ 
+5. Compile/build the package:
+
+    ```
+    cmake --build _build -- -j2
+    ```
+
+6. Test the build:
+
+    ``` 
+    cd _build
+    ctest
+    ```
+
+7. Install the code:
+
+    ``` 
+    cmake --install _build
+    ```
+
+
+
+## Older and more detailed instructions:
+
+
 **1.1** Install the Fortran and C/C++ compilers and `ARPACK`  using `conda`:
 ```
 conda install cmake
