@@ -31,7 +31,7 @@ Based on [these installation instructions](https://github.com/dftbplus/dftbplus/
     mkdir dftbplus
     cd dftbplus/
     git clone https://github.com/dftbplus/dftbplus.git
-    md dftbplus dftbplus_22.2
+    mv dftbplus dftbplus_22.2
     cd dftbplus_22.2/
     ./utils/get_opt_externals
     ```
@@ -49,7 +49,7 @@ Based on [these installation instructions](https://github.com/dftbplus/dftbplus/
     ```
     mkdir _build
     mkdir _install
-    C=gfortran CC=gcc cmake -DCMAKE_INSTALL_PREFIX=/home/alexvakimov/SOFTWARE/dftbplus/dftbplus/_install -B _build
+    FC=gfortran CC=gcc cmake -DCMAKE_INSTALL_PREFIX=/home/alexvakimov/SOFTWARE/dftbplus/dftbplus/_install -B _build
     ```
  
 5. Compile/build the package:
@@ -63,6 +63,7 @@ Based on [these installation instructions](https://github.com/dftbplus/dftbplus/
     ``` 
     cd _build
     ctest
+    cd ../
     ```
 
 7. Install the code:
